@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<style>
+    html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.name {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color:#9940ff;
+
+}
+</style>
+<body>
+<div class="name">
+     <h1>Application Form</h1>
+        <form method="post" action="{% url 'submit' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+    <label for="country">District:</label>
+    <select id="country" name="country">
+        <option value="">Select District</option>
+        <option value="kollam">Kollam</option>
+        <option value="kottay">Kottayam</option>
+        <option value="Alap">Alappuzha</option>
+        <option value="idu">Idukki</option>
+        <option value="tvm">Thiruvanathapuram</option>
+    </select>
+
+    <br><br>
+
+    <label for="state">Branches</label>
+    <select id="state" name="state">
+        <option value="">Select Branches</option>
+    </select><br>
+            <br>
+                      <input type="submit" value="Submit"><BR><BR>
+                <a href="{% url 'logout' %}">Logout</a>
+        </form>
+
+</div>
+    <script>
+        const stateObject = {
+            "kollam": ["Neduvamood", "Parippally", "Thenmala", "karinagapally"],
+            "kottay": ["Pala", "Ambalakadavu", "Vaikkom", "Kumarokam"],
+            "Alap": ["Kuttanad", "Vembanad", "Ambalapuzha", "Pallichal"],
+            "idu" :["Kavalapara","Munnar","Kurava","Kurathi"],
+            "tvm" :["Thampanoor","Poovar","Kovalam","Pozhiyoor"]
+        };
+
+        document.getElementById('country').addEventListener('change', function() {
+            const country = this.value;
+            const stateSelect = document.getElementById('state');
+
+            // Clear previous state options
+            stateSelect.innerHTML = '<option value="">Select State</option>';
+
+            if (country) {
+                // Populate states based on selected country
+                stateObject[country].forEach(function(state) {
+                    const option = document.createElement('option');
+                    option.value = state.toLowerCase();
+                    option.textContent = state;
+                    stateSelect.appendChild(option);
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

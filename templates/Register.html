@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+    <title>Register</title>
+</head>
+<style>
+     body {
+ background-color: #f4f4f4;
+  font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+
+ }
+
+ .one {
+ text-align:center;
+ bottom:-200px;
+ font-size:45px;
+     padding: 40px 80px;
+        border-bottom: 2px solid #004080;
+            padding-bottom: 10px;
+            margin-bottom: 20px;}
+
+ .name {
+  font-family: "Sofia", sans-serif;
+     background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    vertical-align: middle;
+     position:relative;
+     left:600px;
+bottom:-160px;
+  h1{
+    text-align: center;
+    margin-bottom: 10px;
+    color: #111145;
+    }
+    button {
+   color:white;
+    background:#111145;
+    }
+</style>
+<body>
+<section class="one">
+    <div >
+    <strong>ACE BANK</strong>
+</div>
+</section>
+<div class="name">
+<h1>Register</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><BR><BR>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><BR><BR>
+    <label for="confirm_password">Confirm Password:</label>
+    <input type="password" id="confirm_password" name="confirm_password"><br><BR>
+    <button type="submit">Submit</button>
+</form>
+</div>
+</body>
+</html>

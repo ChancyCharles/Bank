@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Click below</h1>
+<form action="{% url 'Form' %}" methos="POST">
+       {% csrf_token %}
+    <button type="submit">Create an account</button>
+</form>
+</body>
+</html>
